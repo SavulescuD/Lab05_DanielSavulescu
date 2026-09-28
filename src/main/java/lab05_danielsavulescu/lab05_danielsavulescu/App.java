@@ -66,6 +66,10 @@ public class App extends Application {
         gridPane.add(orderBtn, 2, 0);
         
         orderBtn.setOnAction(event -> {
+            if (bagsListView.getSelectionModel().getSelectedItem() == null || cbBags.getSelectionModel().getSelectedItem() == null || sizeGroup.getSelectedToggle().getUserData().toString() == null) {
+                orderLbl.setText("Please select an item");
+            }
+            
             String listViewChoice = bagsListView.getSelectionModel().getSelectedItem();
             String cbBagsChoice = cbBags.getSelectionModel().getSelectedItem();
             String sizeGroupChoice = sizeGroup.getSelectedToggle().getUserData().toString();
@@ -78,8 +82,10 @@ public class App extends Application {
         gridPane.add(clearBtn, 2, 1);
         
         clearBtn.setOnAction(event -> {
-            bagsListView.
-        
+            orderLbl.setText("");
+            bagsListView.getSelectionModel().clearSelection();
+            cbBags.getSelectionModel().clearSelection();
+            sizeGroup.selectToggle(null);
         });
         
         Scene scene = new Scene(root, 600, 350);
