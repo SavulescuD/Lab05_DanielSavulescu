@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 
 /**
  * 
+ * GitHub repository : https://github.com/SavulescuD/Lab05_DanielSavulescu.git
+ * 
  * @author - Daniel Savulescu - 2540408
  * 
  * JavaFX App
