@@ -2,6 +2,7 @@ package lab05_danielsavulescu.lab05_danielsavulescu;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -33,7 +34,7 @@ public class App extends Application {
         
         ComboBox<String> cbBags = new ComboBox<>();
         cbBags.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
-        gridPane.add(cbBags, 1, 0);
+        gridPane.add(cbBags, 1, 1);
         
         ToggleGroup sizeGroup = new ToggleGroup();
         RadioButton small = new RadioButton("Small");
@@ -42,7 +43,11 @@ public class App extends Application {
         small.setToggleGroup(sizeGroup);
         medium.setToggleGroup(sizeGroup);
         large.setToggleGroup(sizeGroup);
-        gridPane.add(sizeGroup, 2, 0);
+        VBox vb = new VBox();
+        vb.getChildren().add(small);
+        vb.getChildren().add(medium);
+        vb.getChildren().add(large);
+        gridPane.add(vb, 1, 0);
         
         Scene scene = new Scene(root, 400, 250);
         stage.setScene(scene);
