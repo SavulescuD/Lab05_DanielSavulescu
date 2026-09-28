@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -100,7 +101,16 @@ public class App extends Application {
         
         var root2 = new BorderPane();
         var gridPane2 = new GridPane();
+        gridPane2.setGridLinesVisible(true);
         VBox choices = new VBox();
+        gridPane2.add(choices, 1, 0);
+        root2.setCenter(gridPane2);
+        gridPane2.setAlignment(Pos.CENTER);
+        VBox choicesStrsVb = new VBox();
+        Label[] choicesStrs = {new Label("Beverages: "), new Label("Appetizers: "), new Label("Main Courses: "), new Label("Desserts: ")};
+        choicesStrsVb.getChildren().addAll(choicesStrs);
+        gridPane2.add(choicesStrsVb, 0, 0);
+        choicesStrsVb.setSpacing(8);
         
         ComboBox<String> beverageCb = new ComboBox<String>();
         beverageCb.setPromptText("Beverages");
@@ -137,6 +147,8 @@ public class App extends Application {
         desserts.put("Pudding", 3.25);
         dessertCb.getItems().addAll(desserts.keySet());
         choices.getChildren().add(dessertCb);
+        
+        Slider slider = new Slider(0.0, 20.0, 15.0);
         
         Scene scene2 = new Scene(root2, 600, 350);
         nextTask.setOnAction(event -> {
